@@ -40,17 +40,18 @@ const toggleNavbar = function(){
 addEventOnElements(navTogglers,'click', toggleNavbar)
 
 /** 
-* Header
+* Header & back-top-btn
 */
 
 const header = document.querySelector('[data-header]')
+const backTopBtn = document.querySelector('[data-back-top-btn]')
 
 let lastScrollPos = 0
 
 const hideHeader = function() {
     const isScrollBottom = lastScrollPos < window.scrollY
     isScrollBottom
-    ? header.classList.add('hide')
+    ? header.classList.add('hide') 
     : header.classList.remove('hide')
 
     lastScrollPos = window.scrollY
@@ -59,10 +60,12 @@ const hideHeader = function() {
 window.addEventListener('scroll',function(){
     if(window.scrollY >= 50){
         header.classList.add('active')
+        backTopBtn.classList.add('active')
         hideHeader()
     }
     else{
         header.classList.remove('active')
+        backTopBtn.classList.remove('active')
     }
     
     
@@ -134,3 +137,26 @@ addEventOnElements([heroSliderNextBtn, heroSliderPrevBtn], 'mouseover', function
 addEventOnElements([heroSliderNextBtn, heroSliderPrevBtn], 'mouseout', autoSlide)
 
 window.addEventListener('load', autoSlide)
+
+
+/** 
+* Paralaxeffect
+*/
+
+const parallaxItems = document.querySelectorAll('[data-parallax-item]')
+
+let x, y;
+
+window.addEventListener('mousemove', function(event){
+    x = (event.clientX / window.innerWidth * 10)-5
+    y = (event.clientY / window.innerHeight * 10)-5
+
+    x = -x
+    y = -y
+
+    for(let i=0, len=parallaxItems.length; i < len; i++) {
+        x *=  Number(parallaxItems[i].dataset.parallaxSpeed)
+        y *=  Number(parallaxItems[i].dataset.parallaxSpeed)
+        parallaxItems[i].style.transform = `translate3d(${x}px, ${y}px, 0px)`
+    }
+})
