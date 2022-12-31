@@ -68,8 +68,14 @@ window.addEventListener('scroll',function(){
         backTopBtn.classList.remove('active')
     }
     
-    
+    //topar-header
+
+    const topbar = document.querySelector('.topbar')
+    header.classList.contains('active') ? topbar.classList.add("topbar-hide") : topbar.classList.remove("topbar-hide")
+        
 })
+
+
 
 /** 
 * Hero Slider
