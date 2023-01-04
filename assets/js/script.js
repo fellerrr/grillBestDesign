@@ -38,6 +38,23 @@ const toggleNavbar = function(){
 }
 
 addEventOnElements(navTogglers,'click', toggleNavbar)
+    
+/// close sideBar on click link
+
+
+const mobMenu = document.querySelectorAll('[data-mobMenu]')
+
+const toggleMobNavbar = () => {
+    if (navbar.classList.contains('active')){
+        navbar.classList.toggle('active')
+        overlay.classList.toggle('active')
+        document.body.classList.toggle('nav-active')
+    }
+   
+}
+
+addEventOnElements(mobMenu,'click', toggleMobNavbar)
+
 
 /** 
 * Header & back-top-btn

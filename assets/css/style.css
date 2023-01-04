@@ -507,7 +507,7 @@ textarea::placeholder{opacity:.2}
   justify-items: center;
   transition: var(--transition-2);
 
-  display:none;
+  /* display:none; */
 
 }
 .preload > * {
